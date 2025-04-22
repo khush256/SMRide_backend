@@ -35,9 +35,10 @@ router.post('/', async (req, res) => {
 });
 
 // Get all requests (sorted by newest first)
-router.get('/', async (req, res) => {
+router.get('/:token', async (req, res) => {
     try {
-        const requests = await Request.find().sort({ createdAt: -1 });
+        const { token } = req.params;
+        const requests = await Request.find({ userId: { $ne: token } }).sort({ createdAt: -1 });
 
         res.json(requests.map(request => ({
             requestID: request.requestID,
