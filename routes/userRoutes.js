@@ -38,9 +38,9 @@ router.post('/send-otp', async (req, res) => {
 
         //Send OTP (using Twilio)
         await twilio.messages.create({
-            body: `${otp} is your OTP for User ID ${process.env.TO_PHONE_NUMBER}. Please enter the OTP to proceed and do not share it with anyone `,
+            body: `${otp} is your OTP for User ID ${phone}. Please enter the OTP to proceed and do not share it with anyone `,
             from: process.env.TWILIO_PHONE_NUMBER,
-            to: `+91${process.env.TO_PHONE_NUMBER}`,
+            to: `+91${phone}`,
         })
 
         res.status(200).json({
