@@ -1,9 +1,9 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const userRoutes = require('./routes/userRoutes');
-const requestRoutes = require('./routes/requestRoutes');
-const connectDB = require('./config/db');
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const userRoutes = require("./routes/userRoutes");
+const requestRoutes = require("./routes/requestRoutes");
+const connectDB = require("./config/db");
 
 const app = express();
 
@@ -16,13 +16,13 @@ app.use(cors());
 connectDB();
 
 // Routes
-app.use('/api/user', userRoutes);
-app.use('/api/request', requestRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/request", requestRoutes);
 
 //Error handling middleware
 app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).json({ error: 'Something went wrong!' });
+  console.error(err.stack);
+  res.status(500).json({ error: "Something went wrong!" });
 });
 
 module.exports = app;
