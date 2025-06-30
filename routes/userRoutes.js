@@ -191,7 +191,7 @@ router.get("/info/:userid", async (req, res) => {
 });
 
 // This route is used to update the user's accepted rides
-router.patch("accepted-rides/:userId", async (req, res) => {
+router.patch("/accepted-rides/:userId", async (req, res) => {
   try {
     const { userId } = req.params;
     const { driverName, driverPhone, location, time, rate } = req.body;
@@ -273,7 +273,7 @@ router.get("/:token", async (req, res) => {
 });
 
 // Update vehicleNo of user if not added
-router.patch("update-vehicle/:token", async (req, res) => {
+router.patch("/update-vehicle/:token", async (req, res) => {
   try {
     const { token } = req.params;
     const { vehicleNo } = req.body; // Get vehicleNo from request body
